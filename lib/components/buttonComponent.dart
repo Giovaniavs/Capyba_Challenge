@@ -22,7 +22,7 @@ class ButtonComponent extends StatelessWidget {
             shadowColor: Colors.black,
             elevation: 4,
             backgroundColor: backgroundColor,
-            textStyle: TextStyle(color: Colors.white)),
+            textStyle: TextStyle(color: Colors.white, fontSize: 18)),
       ),
     );
   }
