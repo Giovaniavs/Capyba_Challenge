@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 
-import 'package:capyba_challenge/components/buttonComponent.dart';
 import 'package:capyba_challenge/components/inputComponent.dart';
+import 'package:capyba_challenge/components/buttonComponent.dart';
 
-class LoginPage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _RegisterPage createState() => _RegisterPage();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPage extends State<RegisterPage> {
+  String name = '';
   String email = '';
   String password = '';
+  String repeatPassword = '';
 
   @override
   Widget build(BuildContext context) {
@@ -22,37 +24,48 @@ class _LoginPageState extends State<LoginPage> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Image.asset('lib/assets/images/capyba_logo.png',
                       width: 80, height: 80),
-                  SizedBox(
-                    height: 80,
+                  Text(
+                    'Realize o seu cadastro!',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  InputComponent(
+                    typeOfInput: 'Name',
+                    label: 'Nome',
+                    onChanged: (namelValue) {
+                      name = namelValue;
+                      print(name);
+                    },
                   ),
                   InputComponent(
                     typeOfInput: 'Email',
+                    label: 'E-mail',
                     onChanged: (emailValue) {
                       email = emailValue;
                     },
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
                   InputComponent(
-                    typeOfInput: 'Senha',
+                    typeOfInput: 'Password',
+                    label: 'Senha',
                     onChanged: (passwordValue) {
-                      print(passwordValue);
                       password = passwordValue;
                     },
                   ),
-                  SizedBox(
-                    height: 20,
+                  InputComponent(
+                    typeOfInput: 'Password',
+                    label: 'Repita a senha',
+                    onChanged: (repeatPasswordValue) {
+                      repeatPassword = repeatPasswordValue;
+                    },
                   ),
                   ButtonComponent(
-                    width: 90,
-                    title: 'Entrar',
+                    width: 110,
+                    title: 'Cadastrar',
                     fontSize: 20,
-                    backgroundColor: Colors.greenAccent.shade700,
+                    backgroundColor: Colors.blueAccent.shade400,
                     onPressed: () {
                       Navigator.of(context).pushReplacementNamed('/home');
                     },

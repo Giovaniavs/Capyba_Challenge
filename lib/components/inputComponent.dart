@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 
 class InputComponent extends StatelessWidget {
   final String typeOfInput;
+  final String label;
   final Function onChanged;
 
   InputComponent({
     Key key,
     this.typeOfInput,
+    this.label,
     this.onChanged,
   }) : super(key: key);
 
@@ -14,12 +16,12 @@ class InputComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       onChanged: this.onChanged,
-      obscureText: this.typeOfInput == 'Senha' ? (true) : (false),
+      obscureText: this.typeOfInput == 'Password' ? (true) : (false),
       keyboardType: this.typeOfInput == 'Email'
           ? (TextInputType.emailAddress)
           : (TextInputType.text),
       decoration: InputDecoration(
-        labelText: this.typeOfInput,
+        labelText: this.label,
         border: OutlineInputBorder(),
       ),
     );
