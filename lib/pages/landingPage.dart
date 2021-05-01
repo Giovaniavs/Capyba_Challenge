@@ -23,8 +23,11 @@ class _LandingPageState extends State<LandingPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Image.asset('lib/assets/images/capyba_logo.png',
-                    width: 80, height: 80),
+                Image.asset(
+                  'lib/assets/images/capyba_logo.png',
+                  width: 80,
+                  height: 80,
+                ),
                 Text(
                   'Seja Bem vindo(a) ao desafio Capyba!',
                   style: TextStyle(fontSize: 20),

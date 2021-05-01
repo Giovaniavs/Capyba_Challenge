@@ -22,31 +22,41 @@ class _LoginPageState extends State<LoginPage> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Image.asset('lib/assets/images/capyba_logo.png',
-                      width: 80, height: 80),
-                  SizedBox(
+                  Image.asset(
+                    'lib/assets/images/capyba_logo.png',
+                    width: 80,
                     height: 80,
                   ),
-                  InputComponent(
-                    typeOfInput: 'Email',
-                    onChanged: (emailValue) {
-                      email = emailValue;
-                    },
+                  Text(
+                    'Faça o login na plataforma!',
+                    style: TextStyle(fontSize: 20),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  InputComponent(
-                    typeOfInput: 'Senha',
-                    onChanged: (passwordValue) {
-                      print(passwordValue);
-                      password = passwordValue;
-                    },
-                  ),
-                  SizedBox(
-                    height: 20,
+                  Container(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        InputComponent(
+                          typeOfInput: 'Email',
+                          label: 'E-mail',
+                          onChanged: (emailValue) {
+                            email = emailValue;
+                          },
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        InputComponent(
+                          typeOfInput: 'Password',
+                          label: 'Senha',
+                          onChanged: (passwordValue) {
+                            print(passwordValue);
+                            password = passwordValue;
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                   ButtonComponent(
                     width: 90,
