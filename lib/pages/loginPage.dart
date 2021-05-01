@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:capyba_challenge/components/buttonComponent.dart';
-import 'package:capyba_challenge/components/loginInputComponent.dart';
+import 'package:capyba_challenge/components/inputComponent.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -23,6 +23,11 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Image.asset('lib/assets/images/capyba_logo.png',
+                    width: 80, height: 80),
+                SizedBox(
+                  height: 80,
+                ),
                 InputComponent(
                   typeOfInput: 'Email',
                   onChanged: (emailValue) {
@@ -45,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
                     width: 100,
                     child: ButtonComponent(
                       title: 'Entrar',
-                      backgroundColor: Colors.green.shade400,
+                      backgroundColor: Colors.greenAccent.shade700,
                     )),
               ],
             ),

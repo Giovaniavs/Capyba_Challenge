@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Capyba Challenge',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primaryColor: Colors.greenAccent.shade700,
       ),
       home: LoginPage(),
     );
