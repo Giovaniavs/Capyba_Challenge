@@ -40,18 +40,19 @@ class _LoginPageState extends State<LoginPage> {
                 InputComponent(
                   typeOfInput: 'Senha',
                   onChanged: (passwordValue) {
+                    print(passwordValue);
                     password = passwordValue;
                   },
                 ),
                 SizedBox(
                   height: 20,
                 ),
-                Container(
-                    width: 100,
-                    child: ButtonComponent(
-                      title: 'Entrar',
-                      backgroundColor: Colors.greenAccent.shade700,
-                    )),
+                ButtonComponent(
+                  width: 90,
+                  title: 'Entrar',
+                  backgroundColor: Colors.greenAccent.shade700,
+                  onPressed: () {},
+                ),
               ],
             ),
           )),
