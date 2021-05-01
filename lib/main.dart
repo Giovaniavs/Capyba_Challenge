@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+
+import 'package:capyba_challenge/pages/landingPage.dart';
 import 'package:capyba_challenge/pages/loginPage.dart';
+import 'package:capyba_challenge/pages/homePage.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,7 +16,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.greenAccent.shade700,
       ),
-      home: LoginPage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => LandingPage(),
+        '/login': (context) => LoginPage(),
+        // '/register': (context) => RegisterPage(),
+        '/home': (context) => HomePage(),
+      },
     );
   }
 }

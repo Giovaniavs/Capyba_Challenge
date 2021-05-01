@@ -51,8 +51,11 @@ class _LoginPageState extends State<LoginPage> {
                   ButtonComponent(
                     width: 90,
                     title: 'Entrar',
+                    fontSize: 18,
                     backgroundColor: Colors.greenAccent.shade700,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushReplacementNamed('/home');
+                    },
                   ),
                 ],
               ),
