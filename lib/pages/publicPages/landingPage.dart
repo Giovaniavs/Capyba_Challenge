@@ -1,4 +1,3 @@
-import 'package:capyba_challenge/services/auth_provider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:capyba_challenge/components/buttonComponent.dart';
@@ -50,10 +49,6 @@ class _LandingPageState extends State<LandingPage> {
                         fontSize: 24,
                         backgroundColor: Colors.blueAccent.shade400,
                         onPressed: () {
-                          final test =
-                              Provider.of(context).auth.getCurrentUID();
-                          print(test);
-
                           Navigator.of(context).pushNamed('/register');
                         },
                       ),

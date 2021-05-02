@@ -10,9 +10,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final AuthService _auth = AuthService();
   String email = '';
   String password = '';
-  final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +67,6 @@ class _LoginPageState extends State<LoginPage> {
                     backgroundColor: Colors.greenAccent.shade700,
                     onPressed: () async {
                       dynamic result = await _auth.signInAnonymous();
-
                       if (result == null) {
                         print('failed');
                       } else {

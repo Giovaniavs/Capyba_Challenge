@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:capyba_challenge/services/auth_service.dart';
 import 'package:capyba_challenge/components/buttonComponent.dart';
 
 class HomePage extends StatefulWidget {
@@ -8,14 +9,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final AuthService _auth = AuthService();
   String email = '';
   String password = '';
-
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
-  void _openDrawer() {
-    _scaffoldKey.currentState.openDrawer();
-  }
 
   void _closeDrawer() {
     Navigator.of(context).pop();
@@ -60,9 +56,9 @@ class _HomePageState extends State<HomePage> {
                       backgroundColor: Colors.blueAccent.shade400,
                       fontSize: 20,
                       height: 50,
-                      onPressed: _closeDrawer,
                       width: double.infinity,
                       title: 'Validar Email',
+                      onPressed: _closeDrawer,
                     ),
                   ],
                 ),
@@ -71,9 +67,12 @@ class _HomePageState extends State<HomePage> {
                 backgroundColor: Colors.red.shade400,
                 fontSize: 20,
                 height: 50,
-                onPressed: _closeDrawer,
                 width: double.infinity,
                 title: 'Sair',
+                onPressed: () async {
+                  await _auth.signOut();
+                  Navigator.of(context).pushReplacementNamed('/');
+                },
               ),
             ],
           ),

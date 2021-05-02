@@ -13,7 +13,12 @@ class AuthService {
       );
 
   Future<String> getCurrentUID() async {
-    return (await _auth.currentUser()).uid;
+    final existUser = await _auth.currentUser();
+    if (existUser != null) {
+      return existUser.uid;
+    } else {
+      return null;
+    }
   }
 
   Future signInAnonymous() async {
@@ -22,6 +27,15 @@ class AuthService {
       FirebaseUser user = result.user;
 
       return _userFromFirebaseUser(user);
+    } catch (err) {
+      print(err.toString());
+      return null;
+    }
+  }
+
+  Future signOut() async {
+    try {
+      return await _auth.signOut();
     } catch (err) {
       print(err.toString());
       return null;
