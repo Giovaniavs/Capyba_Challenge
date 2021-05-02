@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:capyba_challenge/services/auth.dart';
+import 'package:capyba_challenge/services/auth_service.dart';
 import 'package:capyba_challenge/components/buttonComponent.dart';
 import 'package:capyba_challenge/components/inputComponent.dart';
 
