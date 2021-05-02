@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:capyba_challenge/services/auth.dart';
 import 'package:capyba_challenge/components/buttonComponent.dart';
 import 'package:capyba_challenge/components/inputComponent.dart';
 
@@ -11,6 +12,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   String email = '';
   String password = '';
+  final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -63,8 +65,15 @@ class _LoginPageState extends State<LoginPage> {
                     title: 'Entrar',
                     fontSize: 20,
                     backgroundColor: Colors.greenAccent.shade700,
-                    onPressed: () {
-                      Navigator.of(context).pushReplacementNamed('/home');
+                    onPressed: () async {
+                      dynamic result = await _auth.signInAnonymous();
+
+                      if (result == null) {
+                        print('failed');
+                      } else {
+                        print(result.uid);
+                        Navigator.of(context).pushReplacementNamed('/home');
+                      }
                     },
                   ),
                 ],

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:capyba_challenge/components/buttonComponent.dart';
-import 'package:capyba_challenge/components/inputComponent.dart';
 
 class LandingPage extends StatefulWidget {
   @override
