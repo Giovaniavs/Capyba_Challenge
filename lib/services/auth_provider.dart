@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'auth_service.dart';
+import 'auth_services.dart';
 
-class Provider extends InheritedWidget {
+class UserProvider extends InheritedWidget {
   final AuthService auth;
-  Provider({
+  UserProvider({
     Key key,
     Widget child,
     this.auth,
@@ -14,6 +14,6 @@ class Provider extends InheritedWidget {
     return true;
   }
 
-  static Provider of(BuildContext context) =>
-      (context.dependOnInheritedWidgetOfExactType<Provider>());
+  static UserProvider of(BuildContext context) =>
+      (context.dependOnInheritedWidgetOfExactType<UserProvider>());
 }

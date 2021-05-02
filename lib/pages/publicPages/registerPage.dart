@@ -9,6 +9,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPage extends State<RegisterPage> {
+  final _templateInputValidation = GlobalKey<FormState>();
   String name = '';
   String email = '';
   String password = '';
@@ -23,54 +24,89 @@ class _RegisterPage extends State<RegisterPage> {
             height: MediaQuery.of(context).size.height,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Image.asset('lib/assets/images/capyba_logo.png',
-                      width: 80, height: 80),
-                  Text(
-                    'Realize o seu cadastro!',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  InputComponent(
-                    typeOfInput: 'Name',
-                    label: 'Nome',
-                    onChanged: (namelValue) {
-                      name = namelValue;
-                      print(name);
-                    },
-                  ),
-                  InputComponent(
-                    typeOfInput: 'Email',
-                    label: 'E-mail',
-                    onChanged: (emailValue) {
-                      email = emailValue;
-                    },
-                  ),
-                  InputComponent(
-                    typeOfInput: 'Password',
-                    label: 'Senha',
-                    onChanged: (passwordValue) {
-                      password = passwordValue;
-                    },
-                  ),
-                  InputComponent(
-                    typeOfInput: 'Password',
-                    label: 'Repita a senha',
-                    onChanged: (repeatPasswordValue) {
-                      repeatPassword = repeatPasswordValue;
-                    },
-                  ),
-                  ButtonComponent(
-                    width: 110,
-                    title: 'Cadastrar',
-                    fontSize: 20,
-                    backgroundColor: Colors.blueAccent.shade400,
-                    onPressed: () {
-                      Navigator.of(context).pushReplacementNamed('/home');
-                    },
-                  ),
-                ],
+              child: Form(
+                key: _templateInputValidation,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Image.asset('lib/assets/images/capyba_logo.png',
+                        width: 80, height: 80),
+                    Text(
+                      'Realize o seu cadastro!',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    InputComponent(
+                      typeOfInput: 'Name',
+                      label: 'Nome',
+                      validator: (nameValue) {
+                        if (nameValue.isEmpty) {
+                          return 'Coloque o seu nome!';
+                        }
+                      },
+                      onChanged: (namelValue) {
+                        name = namelValue;
+                        print(name);
+                      },
+                    ),
+                    InputComponent(
+                      typeOfInput: 'Email',
+                      label: 'E-mail',
+                      validator: (emailValue) {
+                        if (emailValue.isEmpty) {
+                          return 'Coloque o seu E-mail!';
+                        } else if (emailValue.length < 10) {
+                          return 'Coloque um E-mail com 10 ou mais caracteres!';
+                        }
+                      },
+                      onChanged: (emailValue) {
+                        email = emailValue;
+                      },
+                    ),
+                    InputComponent(
+                      typeOfInput: 'Password',
+                      label: 'Senha',
+                      validator: (passwordValue) {
+                        if (passwordValue.isEmpty) {
+                          return 'Coloque a sua senha!';
+                        } else if (passwordValue.length < 6) {
+                          return 'Coloque uma senha com 6 ou mais caracteres!';
+                        }
+                      },
+                      onChanged: (passwordValue) {
+                        password = passwordValue;
+                      },
+                    ),
+                    InputComponent(
+                      typeOfInput: 'Password',
+                      label: 'Repita a senha',
+                      validator: (repeatPasswordValue) {
+                        if (repeatPasswordValue.isEmpty) {
+                          return 'Repita a sua senha!';
+                        } else if (repeatPasswordValue != password) {
+                          return 'As senhas não coincidem!';
+                        }
+                      },
+                      onChanged: (repeatPasswordValue) {
+                        repeatPassword = repeatPasswordValue;
+                      },
+                    ),
+                    ButtonComponent(
+                      width: 110,
+                      title: 'Cadastrar',
+                      fontSize: 20,
+                      backgroundColor: Colors.blueAccent.shade400,
+                      onPressed: () {
+                        if (_templateInputValidation.currentState.validate()) {
+                          print(name);
+                          print(email);
+                          print(password);
+                          print(repeatPassword);
+                        }
+                        // Navigator.of(context).pushReplacementNamed('/home');
+                      },
+                    ),
+                  ],
+                ),
               ),
             )),
       ),

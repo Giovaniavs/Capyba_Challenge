@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:capyba_challenge/services/auth_provider.dart';
-import 'package:capyba_challenge/services/auth_service.dart';
+import 'package:capyba_challenge/services/auth_services.dart';
 
 import 'package:capyba_challenge/pages/publicPages/registerPage.dart';
 import 'package:capyba_challenge/pages/publicPages/landingPage.dart';
@@ -15,7 +15,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Provider(
+    return UserProvider(
       auth: AuthService(),
       child: MaterialApp(
         title: 'Capyba Challenge',

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:capyba_challenge/services/auth_service.dart';
+import 'package:capyba_challenge/services/auth_services.dart';
 import 'package:capyba_challenge/components/buttonComponent.dart';
 import 'package:capyba_challenge/components/inputComponent.dart';
 
@@ -53,7 +53,6 @@ class _LoginPageState extends State<LoginPage> {
                           typeOfInput: 'Password',
                           label: 'Senha',
                           onChanged: (passwordValue) {
-                            print(passwordValue);
                             password = passwordValue;
                           },
                         ),
@@ -66,13 +65,15 @@ class _LoginPageState extends State<LoginPage> {
                     fontSize: 20,
                     backgroundColor: Colors.greenAccent.shade700,
                     onPressed: () async {
-                      dynamic result = await _auth.signInAnonymous();
-                      if (result == null) {
-                        print('failed');
-                      } else {
-                        print(result.uid);
-                        Navigator.of(context).pushReplacementNamed('/home');
-                      }
+                      print(email);
+                      print(password);
+                      // dynamic result = await _auth.signInAnonymous();
+                      // if (result == null) {
+                      //   print('failed');
+                      // } else {
+                      //   print(result.uid);
+                      //   Navigator.of(context).pushReplacementNamed('/home');
+                      // }
                     },
                   ),
                 ],
