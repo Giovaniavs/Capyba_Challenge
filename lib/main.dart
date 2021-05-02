@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Capyba Challenge',
       theme: ThemeData(
+        fontFamily: 'Roboto',
         primaryColor: Colors.greenAccent.shade700,
       ),
       initialRoute: '/',
