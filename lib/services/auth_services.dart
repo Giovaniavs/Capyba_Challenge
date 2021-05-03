@@ -1,5 +1,6 @@
 import 'package:capyba_challenge/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -21,12 +22,14 @@ class AuthService {
     }
   }
 
-  Future signInAnonymous() async {
+  Future createUserWithEmailAndPassword(String email, String password) async {
     try {
-      AuthResult result = await _auth.signInAnonymously();
-      FirebaseUser user = result.user;
+      AuthResult result = await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
 
-      return _userFromFirebaseUser(user);
+      FirebaseUser newUser = result.user;
+
+      return _userFromFirebaseUser(newUser);
     } catch (err) {
       print(err.toString());
       return null;

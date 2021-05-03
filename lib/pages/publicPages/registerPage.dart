@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:capyba_challenge/services/auth_services.dart';
+
 import 'package:capyba_challenge/components/inputComponent.dart';
 import 'package:capyba_challenge/components/buttonComponent.dart';
 
@@ -10,10 +12,12 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPage extends State<RegisterPage> {
   final _templateInputValidation = GlobalKey<FormState>();
+  final AuthService _auth = AuthService();
   String name = '';
   String email = '';
   String password = '';
   String repeatPassword = '';
+  String errorMessage = '';
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +49,6 @@ class _RegisterPage extends State<RegisterPage> {
                       },
                       onChanged: (namelValue) {
                         name = namelValue;
-                        print(name);
                       },
                     ),
                     InputComponent(
@@ -90,20 +93,40 @@ class _RegisterPage extends State<RegisterPage> {
                         repeatPassword = repeatPasswordValue;
                       },
                     ),
-                    ButtonComponent(
-                      width: 110,
-                      title: 'Cadastrar',
-                      fontSize: 20,
-                      backgroundColor: Colors.blueAccent.shade400,
-                      onPressed: () {
-                        if (_templateInputValidation.currentState.validate()) {
-                          print(name);
-                          print(email);
-                          print(password);
-                          print(repeatPassword);
-                        }
-                        // Navigator.of(context).pushReplacementNamed('/home');
-                      },
+                    Container(
+                      child: Column(
+                        children: [
+                          ButtonComponent(
+                            width: 110,
+                            title: 'Cadastrar',
+                            fontSize: 20,
+                            backgroundColor: Colors.blueAccent.shade400,
+                            onPressed: () async {
+                              if (_templateInputValidation.currentState
+                                  .validate()) {
+                                dynamic result =
+                                    await _auth.createUserWithEmailAndPassword(
+                                        email, password);
+
+                                print(result);
+
+                                if (result == null) {
+                                  setState(() => errorMessage =
+                                      'Email inválido ou já cadastrado!');
+                                } else {
+                                  Navigator.of(context)
+                                      .pushReplacementNamed('/home');
+                                }
+                              }
+                            },
+                          ),
+                          SizedBox(height: 12.0),
+                          Text(
+                            errorMessage,
+                            style: TextStyle(color: Colors.red, fontSize: 14.0),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),

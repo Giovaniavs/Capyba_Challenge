@@ -65,8 +65,10 @@ class _LoginPageState extends State<LoginPage> {
                     fontSize: 20,
                     backgroundColor: Colors.greenAccent.shade700,
                     onPressed: () async {
-                      print(email);
-                      print(password);
+                      Navigator.of(context).pushReplacementNamed('/home');
+
+                      // print(email);
+                      // print(password);
                       // dynamic result = await _auth.signInAnonymous();
                       // if (result == null) {
                       //   print('failed');

@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
                       height: 10,
                     ),
                     ButtonComponent(
-                      backgroundColor: Colors.blueAccent.shade400,
+                      backgroundColor: Colors.greenAccent.shade700,
                       fontSize: 20,
                       height: 50,
                       width: double.infinity,
