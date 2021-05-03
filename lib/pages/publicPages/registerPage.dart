@@ -56,7 +56,7 @@ class _RegisterPage extends State<RegisterPage> {
                       label: 'E-mail',
                       validator: (emailValue) {
                         if (emailValue.isEmpty) {
-                          return 'Coloque o seu E-mail!';
+                          return 'Coloque o seu e-mail!';
                         } else if (emailValue.length < 10) {
                           return 'Coloque um E-mail com 10 ou mais caracteres!';
                         }
@@ -115,7 +115,7 @@ class _RegisterPage extends State<RegisterPage> {
                                       'Email inválido ou já cadastrado!');
                                 } else {
                                   Navigator.of(context)
-                                      .pushReplacementNamed('/home');
+                                      .pushReplacementNamed('/login');
                                 }
                               }
                             },

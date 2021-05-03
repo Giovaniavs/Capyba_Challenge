@@ -1,6 +1,5 @@
 import 'package:capyba_challenge/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/services.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -18,6 +17,20 @@ class AuthService {
     if (existUser != null) {
       return existUser.uid;
     } else {
+      return null;
+    }
+  }
+
+  Future signInWithEmailAndPassword(String email, String password) async {
+    try {
+      AuthResult result = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+
+      FirebaseUser userFromResult = result.user;
+
+      return _userFromFirebaseUser(userFromResult);
+    } catch (err) {
+      print(err.toString());
       return null;
     }
   }
