@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                 title: 'Sair',
                 onPressed: () async {
                   await _auth.signOut();
-                  Navigator.of(context).pushReplacementNamed('/');
+                  Navigator.of(context).pushReplacementNamed('/landingpage');
                 },
               ),
             ],
