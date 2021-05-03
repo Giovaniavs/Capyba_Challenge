@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:capyba_challenge/components/buttonComponent.dart';
+import 'package:capyba_challenge/customWidgets/customButton.dart';
 
 class LandingPage extends StatefulWidget {
   @override
@@ -34,7 +34,7 @@ class _LandingPageState extends State<LandingPage> {
                 Container(
                   child: Column(
                     children: [
-                      ButtonComponent(
+                      CustomButton(
                         width: double.infinity,
                         title: 'Entrar',
                         fontSize: 24,
@@ -43,7 +43,7 @@ class _LandingPageState extends State<LandingPage> {
                           Navigator.of(context).pushNamed('/login');
                         },
                       ),
-                      ButtonComponent(
+                      CustomButton(
                         width: double.infinity,
                         title: 'Cadastrar',
                         fontSize: 24,

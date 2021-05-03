@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:capyba_challenge/services/auth_services.dart';
 
-import 'package:capyba_challenge/components/inputComponent.dart';
-import 'package:capyba_challenge/components/buttonComponent.dart';
+import 'package:capyba_challenge/customWidgets/customButton.dart';
+import 'package:capyba_challenge/customWidgets/customInput.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -39,7 +39,7 @@ class _RegisterPage extends State<RegisterPage> {
                       'Realize o seu cadastro!',
                       style: TextStyle(fontSize: 20),
                     ),
-                    InputComponent(
+                    CustomInput(
                       typeOfInput: 'Name',
                       label: 'Nome',
                       validator: (nameValue) {
@@ -51,7 +51,7 @@ class _RegisterPage extends State<RegisterPage> {
                         name = namelValue;
                       },
                     ),
-                    InputComponent(
+                    CustomInput(
                       typeOfInput: 'Email',
                       label: 'E-mail',
                       validator: (emailValue) {
@@ -65,7 +65,7 @@ class _RegisterPage extends State<RegisterPage> {
                         email = emailValue;
                       },
                     ),
-                    InputComponent(
+                    CustomInput(
                       typeOfInput: 'Password',
                       label: 'Senha',
                       validator: (passwordValue) {
@@ -79,7 +79,7 @@ class _RegisterPage extends State<RegisterPage> {
                         password = passwordValue;
                       },
                     ),
-                    InputComponent(
+                    CustomInput(
                       typeOfInput: 'Password',
                       label: 'Repita a senha',
                       validator: (repeatPasswordValue) {
@@ -96,7 +96,7 @@ class _RegisterPage extends State<RegisterPage> {
                     Container(
                       child: Column(
                         children: [
-                          ButtonComponent(
+                          CustomButton(
                             width: 110,
                             title: 'Cadastrar',
                             fontSize: 20,

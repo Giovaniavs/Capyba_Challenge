@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:capyba_challenge/services/auth_services.dart';
-import 'package:capyba_challenge/components/buttonComponent.dart';
-import 'package:capyba_challenge/components/inputComponent.dart';
+
+import 'package:capyba_challenge/customWidgets/customButton.dart';
+import 'package:capyba_challenge/customWidgets/customInput.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -43,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          InputComponent(
+                          CustomInput(
                             typeOfInput: 'Email',
                             label: 'E-mail',
                             onChanged: (emailValue) {
@@ -58,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                           SizedBox(
                             height: 15,
                           ),
-                          InputComponent(
+                          CustomInput(
                             typeOfInput: 'Password',
                             label: 'Senha',
                             onChanged: (passwordValue) {
@@ -76,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                     Container(
                       child: Column(
                         children: [
-                          ButtonComponent(
+                          CustomButton(
                             width: 90,
                             title: 'Entrar',
                             fontSize: 20,

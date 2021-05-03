@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:capyba_challenge/customWidgets/customButton.dart';
 import 'package:capyba_challenge/services/auth_services.dart';
-import 'package:capyba_challenge/components/buttonComponent.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
               Container(
                 child: Column(
                   children: [
-                    ButtonComponent(
+                    CustomButton(
                       backgroundColor: Colors.greenAccent.shade700,
                       fontSize: 20,
                       height: 50,
@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(
                       height: 10,
                     ),
-                    ButtonComponent(
+                    CustomButton(
                       backgroundColor: Colors.greenAccent.shade700,
                       fontSize: 20,
                       height: 50,
@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              ButtonComponent(
+              CustomButton(
                 backgroundColor: Colors.red.shade400,
                 fontSize: 20,
                 height: 50,

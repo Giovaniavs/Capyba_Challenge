@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class InputComponent extends StatelessWidget {
+class CustomInput extends StatelessWidget {
   final String typeOfInput;
   final String label;
   final Function onChanged;
   final Function validator;
 
-  InputComponent({
+  CustomInput({
     Key key,
     this.typeOfInput,
     this.label,

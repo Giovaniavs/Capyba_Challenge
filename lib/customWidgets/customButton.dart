@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ButtonComponent extends StatelessWidget {
+class CustomButton extends StatelessWidget {
   final double width;
   final double height;
   final String title;
@@ -8,7 +8,7 @@ class ButtonComponent extends StatelessWidget {
   final Color backgroundColor;
   final Function onPressed;
 
-  ButtonComponent({
+  CustomButton({
     Key key,
     this.width,
     this.height,
