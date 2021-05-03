@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:capyba_challenge/customWidgets/customButton.dart';
 import 'package:capyba_challenge/services/auth_services.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,10 +11,6 @@ class _HomePageState extends State<HomePage> {
   final AuthService _auth = AuthService();
   String email = '';
   String password = '';
-
-  void _closeDrawer() {
-    Navigator.of(context).pop();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,41 +33,46 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                child: Column(
-                  children: [
-                    CustomButton(
-                      backgroundColor: Colors.greenAccent.shade700,
-                      fontSize: 20,
-                      height: 50,
-                      onPressed: _closeDrawer,
-                      width: double.infinity,
-                      title: 'Meu Perfil',
+              Column(
+                children: [
+                  ListTile(
+                    leading: Icon(
+                      Icons.account_box,
+                      color: Colors.greenAccent.shade700,
                     ),
-                    SizedBox(
-                      height: 10,
+                    title: Text('Meu perfil', style: TextStyle(fontSize: 16)),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    leading: Icon(
+                      Icons.email,
+                      color: Colors.greenAccent.shade700,
                     ),
-                    CustomButton(
-                      backgroundColor: Colors.greenAccent.shade700,
-                      fontSize: 20,
-                      height: 50,
-                      width: double.infinity,
-                      title: 'Validar Email',
-                      onPressed: _closeDrawer,
-                    ),
-                  ],
-                ),
+                    title:
+                        Text('Validar e-mail', style: TextStyle(fontSize: 16)),
+                    onTap: () {},
+                  ),
+                ],
               ),
-              CustomButton(
-                backgroundColor: Colors.red.shade400,
-                fontSize: 20,
-                height: 50,
-                width: double.infinity,
-                title: 'Sair',
-                onPressed: () async {
-                  await _auth.signOut();
-                  Navigator.of(context).pushReplacementNamed('/landingpage');
-                },
+              Column(
+                children: [
+                  Divider(
+                    height: 1,
+                  ),
+                  ListTile(
+                    leading:
+                        Icon(Icons.exit_to_app, color: Colors.red.shade400),
+                    title: Text(
+                      'Sair',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    onTap: () async {
+                      await _auth.signOut();
+                      Navigator.of(context)
+                          .pushReplacementNamed('/landingpage');
+                    },
+                  ),
+                ],
               ),
             ],
           ),

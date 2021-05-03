@@ -15,49 +15,48 @@ class _LandingPageState extends State<LandingPage> {
   Widget build(BuildContext context) {
     return Material(
       child: SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Image.asset(
-                  'lib/assets/images/capyba_logo.png',
-                  width: 80,
-                  height: 80,
-                ),
-                Text(
-                  'Seja Bem vindo(a) ao desafio Capyba!',
-                  style: TextStyle(fontSize: 20),
-                ),
-                Container(
-                  child: Column(
-                    children: [
-                      CustomButton(
-                        width: double.infinity,
-                        title: 'Entrar',
-                        fontSize: 24,
-                        backgroundColor: Colors.greenAccent.shade700,
-                        onPressed: () {
-                          Navigator.of(context).pushNamed('/login');
-                        },
-                      ),
-                      CustomButton(
-                        width: double.infinity,
-                        title: 'Cadastrar',
-                        fontSize: 24,
-                        backgroundColor: Colors.blueAccent.shade400,
-                        onPressed: () {
-                          Navigator.of(context).pushNamed('/register');
-                        },
-                      ),
-                    ],
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Image.asset(
+                'lib/assets/images/capyba_logo.png',
+                width: 80,
+                height: 80,
+              ),
+              Text(
+                'Seja Bem vindo(a) ao desafio Capyba!',
+                style: TextStyle(fontSize: 20),
+              ),
+              Column(
+                children: [
+                  CustomButton(
+                    width: double.infinity,
+                    title: 'Entrar',
+                    fontSize: 24,
+                    backgroundColor: Colors.greenAccent.shade700,
+                    onPressed: () {
+                      Navigator.of(context).pushNamed('/login');
+                    },
                   ),
-                )
-              ],
-            ),
-          )),
+                  CustomButton(
+                    width: double.infinity,
+                    title: 'Cadastrar',
+                    fontSize: 24,
+                    backgroundColor: Colors.blueAccent.shade400,
+                    onPressed: () {
+                      Navigator.of(context).pushNamed('/register');
+                    },
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
