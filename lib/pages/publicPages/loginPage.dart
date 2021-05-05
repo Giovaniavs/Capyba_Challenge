@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return loading
-        ? CustomLoading()
+        ? CustomLoading(backgroundColor: Colors.greenAccent.shade400)
         : Scaffold(
             body: SingleChildScrollView(
               child: SizedBox(
