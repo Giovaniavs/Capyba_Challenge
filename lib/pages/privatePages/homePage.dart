@@ -43,6 +43,9 @@ class _HomePageState extends State<HomePage> {
                     title: Text('Meu perfil', style: TextStyle(fontSize: 16)),
                     onTap: () {},
                   ),
+                  Divider(
+                    height: 1,
+                  ),
                   ListTile(
                     leading: Icon(
                       Icons.email,
@@ -51,6 +54,9 @@ class _HomePageState extends State<HomePage> {
                     title:
                         Text('Validar e-mail', style: TextStyle(fontSize: 16)),
                     onTap: () {},
+                  ),
+                  Divider(
+                    height: 1,
                   ),
                 ],
               ),
