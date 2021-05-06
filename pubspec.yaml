@@ -28,6 +28,7 @@ flutter:
 
   assets:
     - lib/assets/images/capyba_logo.png
+    - lib/assets/gifs/confirmation.gif
 
   fonts:
     - family: Roboto

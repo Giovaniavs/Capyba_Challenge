@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                     onTap: () async {
                       await _auth.signOut();
                       Navigator.of(context)
-                          .pushReplacementNamed('/landingpage');
+                          .pushReplacementNamed('/landingPage');
                     },
                   ),
                 ],

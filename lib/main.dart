@@ -1,9 +1,11 @@
-import 'package:capyba_challenge/customWidgets/customSplashScreen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:capyba_challenge/services/auth_provider.dart';
 import 'package:capyba_challenge/services/auth_services.dart';
 
+import 'package:capyba_challenge/customWidgets/customSplashScreen.dart';
+
+import 'package:capyba_challenge/pages/publicPages/successRegisterPage.dart';
 import 'package:capyba_challenge/pages/publicPages/registerPage.dart';
 import 'package:capyba_challenge/pages/publicPages/landingPage.dart';
 import 'package:capyba_challenge/pages/publicPages/loginPage.dart';
@@ -28,9 +30,10 @@ class MyApp extends StatelessWidget {
           navigateTo: LandingPage(),
         ),
         routes: {
-          '/landingpage': (context) => LandingPage(),
-          '/login': (context) => LoginPage(),
+          '/landingPage': (context) => LandingPage(),
           '/register': (context) => RegisterPage(),
+          '/successRegister': (context) => SuccessRegisterPage(),
+          '/login': (context) => LoginPage(),
           '/home': (context) => HomePage(),
         },
       ),

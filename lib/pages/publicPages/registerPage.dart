@@ -122,8 +122,8 @@ class _RegisterPage extends State<RegisterPage> {
                                       loading = false;
                                     });
                                   } else {
-                                    Navigator.of(context)
-                                        .pushReplacementNamed('/login');
+                                    Navigator.of(context).pushReplacementNamed(
+                                        '/successRegister');
                                   }
                                 }
                               },
