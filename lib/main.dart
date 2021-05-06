@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:capyba_challenge/services/auth_provider.dart';
-import 'package:capyba_challenge/services/auth_services.dart';
+import 'package:capyba_challenge/services/authProvider.dart';
+import 'package:capyba_challenge/services/authServices.dart';
 
 import 'package:capyba_challenge/customWidgets/customSplashScreen.dart';
 

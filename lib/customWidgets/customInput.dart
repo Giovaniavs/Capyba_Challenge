@@ -20,9 +20,7 @@ class CustomInput extends StatelessWidget {
       onChanged: this.onChanged,
       validator: this.validator,
       obscureText: this.typeOfInput == 'Password' ? (true) : (false),
-      keyboardType: this.typeOfInput == 'Email'
-          ? (TextInputType.emailAddress)
-          : (TextInputType.text),
+      keyboardType: this.typeOfInput == 'Email' ? (TextInputType.emailAddress) : (TextInputType.text),
       decoration: InputDecoration(
         labelText: this.label,
         border: OutlineInputBorder(),
