@@ -1,8 +1,8 @@
-import 'package:capyba_challenge/customWidgets/customLoading.dart';
 import 'package:flutter/material.dart';
 
 import 'package:capyba_challenge/services/authServices.dart';
 
+import 'package:capyba_challenge/customWidgets/customLoading.dart';
 import 'package:capyba_challenge/customWidgets/customButton.dart';
 import 'package:capyba_challenge/customWidgets/customInput.dart';
 
@@ -39,8 +39,7 @@ class _RegisterPage extends State<RegisterPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Image.asset('lib/assets/images/capyba_logo.png',
-                            width: 80, height: 80
-                        ),
+                            width: 80, height: 80),
                         Text(
                           'Realize o seu cadastro!',
                           style: TextStyle(fontSize: 20),
@@ -107,17 +106,22 @@ class _RegisterPage extends State<RegisterPage> {
                               fontSize: 20,
                               backgroundColor: Colors.blueAccent.shade400,
                               onPressed: () async {
-                                if (_templateInputValidation.currentState.validate()) {
+                                if (_templateInputValidation.currentState
+                                    .validate()) {
                                   setState(() => loading = true);
-                                  dynamic result = await _auth.createUserWithEmailAndPassword(email, password);
+                                  dynamic result = await _auth
+                                      .createUserWithEmailAndPassword(
+                                          name, email, password);
 
                                   if (result == null) {
                                     setState(() {
-                                      errorMessage = 'Email inválido ou já cadastrado!';
+                                      errorMessage =
+                                          'Email inválido ou já cadastrado!';
                                       loading = false;
                                     });
                                   } else {
-                                    Navigator.of(context).pushReplacementNamed('/successRegister');
+                                    Navigator.of(context).pushReplacementNamed(
+                                        '/successRegister');
                                   }
                                 }
                               },

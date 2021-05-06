@@ -1,3 +1,4 @@
+import 'package:capyba_challenge/services/database.dart';
 import 'package:capyba_challenge/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -8,15 +9,13 @@ class AuthService {
     return user != null ? User(uid: user.uid) : null;
   }
 
-  Stream<String> get onAuthStateChanged => _auth.onAuthStateChanged.map(
-        (FirebaseUser user) => user?.uid,
-      );
+  Future getCurrentUID() async {
+    try {
+      final existUser = await _auth.currentUser();
 
-  Future<String> getCurrentUID() async {
-    final existUser = await _auth.currentUser();
-    if (existUser != null) {
-      return existUser.uid;
-    } else {
+      return _userFromFirebaseUser(existUser);
+    } catch (err) {
+      print(err.toString());
       return null;
     }
   }
@@ -35,12 +34,15 @@ class AuthService {
     }
   }
 
-  Future createUserWithEmailAndPassword(String email, String password) async {
+  Future createUserWithEmailAndPassword(
+      String name, String email, String password) async {
     try {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
 
       FirebaseUser newUser = result.user;
+
+      await DatabaseService(uid: newUser.uid).handleUserData(name, email);
 
       return _userFromFirebaseUser(newUser);
     } catch (err) {
