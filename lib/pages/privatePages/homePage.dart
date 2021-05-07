@@ -9,8 +9,24 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final AuthService _auth = AuthService();
+  String name = '';
   String email = '';
-  String password = '';
+
+  @override
+  void initState() {
+    getUserData().then((value) {
+      setState(() {
+        name = value.data['nome'];
+        email = value.data['email'];
+      });
+    });
+    super.initState();
+  }
+
+  Future getUserData() async {
+    dynamic result = await _auth.getUserInformations();
+    return result;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +50,31 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    name,
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                  Text(
+                    email,
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.grey[600],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Divider(
+                    height: 1,
+                  ),
                   ListTile(
                     leading: Icon(
                       Icons.account_box,

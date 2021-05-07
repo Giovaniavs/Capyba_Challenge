@@ -1,4 +1,5 @@
 import 'package:capyba_challenge/services/database.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:capyba_challenge/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -9,11 +10,14 @@ class AuthService {
     return user != null ? User(uid: user.uid) : null;
   }
 
-  Future getCurrentUID() async {
+  Future getUserInformations() async {
     try {
       final existUser = await _auth.currentUser();
 
-      return _userFromFirebaseUser(existUser);
+      dynamic result =
+          Firestore.instance.collection('User').document(existUser.uid).get();
+
+      return result;
     } catch (err) {
       print(err.toString());
       return null;
