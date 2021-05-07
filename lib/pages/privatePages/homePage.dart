@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   SizedBox(
-                    height: 15,
+                    height: 25,
                   ),
                   Divider(
                     height: 1,
