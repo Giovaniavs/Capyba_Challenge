@@ -12,12 +12,23 @@ class AuthService {
 
   Future getUserInformations() async {
     try {
-      final existUser = await _auth.currentUser();
+      final user = await _auth.currentUser();
 
       dynamic result =
-          Firestore.instance.collection('User').document(existUser.uid).get();
+          Firestore.instance.collection('User').document(user.uid).get();
 
       return result;
+    } catch (err) {
+      print(err.toString());
+      return null;
+    }
+  }
+
+  Future sendVerification() async {
+    try {
+      final user = await _auth.currentUser();
+
+      return user.sendEmailVerification();
     } catch (err) {
       print(err.toString());
       return null;

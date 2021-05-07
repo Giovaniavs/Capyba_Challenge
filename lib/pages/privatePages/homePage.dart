@@ -93,7 +93,9 @@ class _HomePageState extends State<HomePage> {
                     ),
                     title:
                         Text('Validar e-mail', style: TextStyle(fontSize: 16)),
-                    onTap: () {},
+                    onTap: () {
+                      _auth.sendVerification();
+                    },
                   ),
                   Divider(
                     height: 1,
