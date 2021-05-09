@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:capyba_challenge/services/authServices.dart';
-import 'package:capyba_challenge/collections/homeCollections.dart';
+import 'package:capyba_challenge/customWidgets/customCollection.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -155,37 +155,37 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            HomeCollection(
+            CustomCollection(
               firstImageUrl:
                   'https://images.unsplash.com/photo-1551801841-ecad875a5142?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=968&q=80',
               secondImageUrl:
                   'https://images.unsplash.com/photo-1554223090-7e482851df45?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=992&q=80',
             ),
-            HomeCollection(
+            CustomCollection(
               firstImageUrl:
                   'https://images.unsplash.com/photo-1552727408-5d0599032dfb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=931&q=80',
               secondImageUrl:
                   'https://images.unsplash.com/photo-1551757102-2caaa44c37f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80',
             ),
-            HomeCollection(
+            CustomCollection(
               firstImageUrl:
                   'https://images.unsplash.com/photo-1551573355-19727699d60a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80',
               secondImageUrl:
                   'https://images.unsplash.com/photo-1553449427-5be243bc1218?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80',
             ),
-            HomeCollection(
+            CustomCollection(
               firstImageUrl:
                   'https://images.unsplash.com/photo-1551801841-ecad875a5142?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=968&q=80',
               secondImageUrl:
                   'https://images.unsplash.com/photo-1554223090-7e482851df45?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=992&q=80',
             ),
-            HomeCollection(
+            CustomCollection(
               firstImageUrl:
                   'https://images.unsplash.com/photo-1552727408-5d0599032dfb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=931&q=80',
               secondImageUrl:
                   'https://images.unsplash.com/photo-1551757102-2caaa44c37f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80',
             ),
-            HomeCollection(
+            CustomCollection(
               firstImageUrl:
                   'https://images.unsplash.com/photo-1551573355-19727699d60a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80',
               secondImageUrl:

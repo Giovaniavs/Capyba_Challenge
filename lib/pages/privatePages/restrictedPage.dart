@@ -33,6 +33,7 @@ class _RestrictedPageState extends State<RestrictedPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
         title: Text(
           'Área restrita',

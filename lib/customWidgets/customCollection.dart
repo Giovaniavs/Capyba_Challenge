@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class HomeCollection extends StatelessWidget {
+class CustomCollection extends StatelessWidget {
   final String firstImageUrl;
   final String secondImageUrl;
 
-  HomeCollection({Key key, this.firstImageUrl, this.secondImageUrl});
+  CustomCollection({Key key, this.firstImageUrl, this.secondImageUrl});
 
   @override
   Widget build(BuildContext context) {
