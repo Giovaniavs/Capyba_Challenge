@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:capyba_challenge/services/authServices.dart';
+import 'package:capyba_challenge/pages/publicPages/landingPage.dart';
 import 'package:capyba_challenge/customWidgets/customCollection.dart';
 
 class HomePage extends StatefulWidget {
@@ -142,8 +143,10 @@ class _HomePageState extends State<HomePage> {
                     ),
                     onTap: () async {
                       await _auth.signOut();
-                      Navigator.of(context)
-                          .pushReplacementNamed('/landingPage');
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                        '/landingPage',
+                        (route) => false,
+                      );
                     },
                   ),
                 ],
