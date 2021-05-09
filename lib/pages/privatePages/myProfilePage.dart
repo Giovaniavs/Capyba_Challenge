@@ -148,7 +148,7 @@ class _MyProfilePage extends State<MyProfilePage> {
                                   if (result == null) {
                                     setState(() {
                                       errorMessage =
-                                          'Email no formato inválido!';
+                                          'Email inválido ou já em uso!';
                                       loading = false;
                                     });
                                   } else {
@@ -166,7 +166,7 @@ class _MyProfilePage extends State<MyProfilePage> {
                                   if (result == null) {
                                     setState(() {
                                       errorMessage =
-                                          'Email no formato inválido!';
+                                          'Email inválido ou já em uso!';
                                       loading = false;
                                     });
                                   } else {
