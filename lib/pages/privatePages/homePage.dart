@@ -18,6 +18,7 @@ class _HomePageState extends State<HomePage> {
 
   String name = '';
   String email = '';
+  String photoUrl = '';
   String validateEmailText = 'Validar e-mail';
 
   @override
@@ -26,7 +27,8 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         name = value[0];
         email = value[1];
-        isEmailVerified = value[2];
+        photoUrl = value[2];
+        isEmailVerified = value[3];
       });
     });
     super.initState();
@@ -62,6 +64,18 @@ class _HomePageState extends State<HomePage> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  SizedBox(
+                    height: 15,
+                  ),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(100.0),
+                    child: Image.network(
+                      photoUrl,
+                      width: 80,
+                      height: 80,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
                   SizedBox(
                     height: 15,
                   ),

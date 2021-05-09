@@ -17,7 +17,6 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPage extends State<RegisterPage> {
   final _templateInputValidation = GlobalKey<FormState>();
   final AuthService _auth = AuthService();
-
   var imageFile;
 
   bool loading = false;
@@ -40,7 +39,11 @@ class _RegisterPage extends State<RegisterPage> {
         setState(() => loading = true);
         Navigator.pop(context, true);
         dynamic result = await _auth.createUserWithEmailAndPassword(
-            name, email, password, imageFile);
+          name,
+          email,
+          password,
+          imageFile,
+        );
 
         if (result == null) {
           setState(() {

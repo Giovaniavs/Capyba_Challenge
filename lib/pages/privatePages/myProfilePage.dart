@@ -1,3 +1,6 @@
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
+
 import 'package:flutter/material.dart';
 
 import 'package:capyba_challenge/services/authServices.dart';
@@ -13,10 +16,13 @@ class MyProfilePage extends StatefulWidget {
 
 class _MyProfilePage extends State<MyProfilePage> {
   final AuthService _auth = AuthService();
+  var imageFile;
+
   bool loading = false;
 
   String name = '';
   String email = '';
+  String photoUrl = '';
   String errorMessage = '';
 
   @override
@@ -25,6 +31,7 @@ class _MyProfilePage extends State<MyProfilePage> {
       setState(() {
         name = value[0];
         email = value[1];
+        photoUrl = value[2];
       });
     });
     super.initState();
@@ -50,11 +57,52 @@ class _MyProfilePage extends State<MyProfilePage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Image.asset('lib/assets/images/capyba_logo.png',
-                            width: 80, height: 80),
                         Text(
                           'Edite suas informações!',
                           style: TextStyle(fontSize: 20),
+                        ),
+                        Column(
+                          children: [
+                            imageFile == null
+                                ? ClipRRect(
+                                    borderRadius: BorderRadius.circular(100.0),
+                                    child: Image.network(
+                                      photoUrl,
+                                      width: 180,
+                                      height: 180,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  )
+                                : ClipRRect(
+                                    borderRadius: BorderRadius.circular(100.0),
+                                    child: Image.file(
+                                      imageFile,
+                                      width: 180,
+                                      height: 180,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            CustomButton(
+                              width: 120,
+                              height: 40,
+                              fontSize: 15,
+                              title: 'Alterar foto',
+                              onPressed: () async {
+                                final pickedFile = await ImagePicker().getImage(
+                                  preferredCameraDevice: CameraDevice.front,
+                                  source: ImageSource.camera,
+                                );
+
+                                setState(() {
+                                  imageFile = File(pickedFile.path);
+                                });
+                              },
+                              backgroundColor: Colors.greenAccent.shade700,
+                            ),
+                          ],
                         ),
                         Column(
                           children: [
@@ -80,24 +128,51 @@ class _MyProfilePage extends State<MyProfilePage> {
                         Column(
                           children: [
                             CustomButton(
-                              width: 110,
-                              title: 'Concluído',
+                              width: double.infinity,
+                              height: 50,
                               fontSize: 20,
+                              title: 'Concluído',
                               backgroundColor: Colors.blueAccent.shade400,
                               onPressed: () async {
-                                // setState(() => loading = true);
-                                // dynamic result = await _auth
-                                //     .updateUserInformations(name, email);
+                                setState(() => loading = true);
 
-                                // if (result == null) {
-                                //   setState(() {
-                                //     errorMessage = 'Email no formato inválido!';
-                                //     loading = false;
-                                //   });
-                                // } else {
-                                //   Navigator.of(context)
-                                //       .pushReplacementNamed('/home');
-                                // }
+                                if (imageFile != null) {
+                                  dynamic result =
+                                      await _auth.updateUserInformations(
+                                    name,
+                                    email,
+                                    imageFile,
+                                  );
+
+                                  if (result == null) {
+                                    setState(() {
+                                      errorMessage =
+                                          'Email no formato inválido!';
+                                      loading = false;
+                                    });
+                                  } else {
+                                    Navigator.of(context)
+                                        .pushReplacementNamed('/home');
+                                  }
+                                } else {
+                                  dynamic result = await _auth
+                                      .updateUserInformationsFromImageUrl(
+                                    name,
+                                    email,
+                                    photoUrl,
+                                  );
+
+                                  if (result == null) {
+                                    setState(() {
+                                      errorMessage =
+                                          'Email no formato inválido!';
+                                      loading = false;
+                                    });
+                                  } else {
+                                    Navigator.of(context)
+                                        .pushReplacementNamed('/home');
+                                  }
+                                }
                               },
                             ),
                             SizedBox(height: 12.0),

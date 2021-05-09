@@ -80,7 +80,8 @@ class _LoginPageState extends State<LoginPage> {
                         Column(
                           children: [
                             CustomButton(
-                              width: 90,
+                              width: double.infinity,
+                              height: 50,
                               title: 'Entrar',
                               fontSize: 20,
                               backgroundColor: Colors.greenAccent.shade700,

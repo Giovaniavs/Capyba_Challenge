@@ -51,12 +51,14 @@ class AuthService {
   Future updateUserInformations(
     String name,
     String email,
-    String imageFileUrl,
+    File imageFile,
   ) async {
     try {
       final user = await _auth.currentUser();
 
       await user.updateEmail(email);
+
+      dynamic imageFileUrl = await uploadImageFromFile(email, imageFile);
 
       await DatabaseService(uid: user.uid)
           .handleUserData(name, email, imageFileUrl);
@@ -90,10 +92,26 @@ class AuthService {
   ) async {
     try {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+        email: email,
+        password: password,
+      );
 
       FirebaseUser newUser = result.user;
 
+      dynamic imageFileUrl = await uploadImageFromFile(email, imageFile);
+
+      await DatabaseService(uid: newUser.uid)
+          .handleUserData(name, email, imageFileUrl);
+
+      return _userFromFirebaseUser(newUser);
+    } catch (err) {
+      print(err.toString());
+      return null;
+    }
+  }
+
+  Future uploadImageFromFile(String email, File imageFile) async {
+    try {
       StorageReference firebaseStorageRef =
           FirebaseStorage.instance.ref().child('userPhotos/user-$email');
 
@@ -103,10 +121,25 @@ class AuthService {
 
       String imageFileUrl = await taskSnapshot.ref.getDownloadURL();
 
-      await DatabaseService(uid: newUser.uid)
-          .handleUserData(name, email, imageFileUrl);
+      return imageFileUrl;
+    } catch (err) {
+      print(err.toString());
+      return null;
+    }
+  }
 
-      return _userFromFirebaseUser(newUser);
+  Future updateUserInformationsFromImageUrl(
+    String name,
+    String email,
+    String imageUrl,
+  ) async {
+    try {
+      final user = await _auth.currentUser();
+
+      await DatabaseService(uid: user.uid)
+          .handleUserData(name, email, imageUrl);
+
+      return _userFromFirebaseUser(user);
     } catch (err) {
       print(err.toString());
       return null;

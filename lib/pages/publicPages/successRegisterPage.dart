@@ -35,7 +35,7 @@ class _SuccessRegisterPageState extends State<SuccessRegisterPage> {
                 ],
               ),
               CustomButton(
-                width: 70,
+                width: 50,
                 title: '>',
                 fontSize: 24,
                 backgroundColor: Colors.greenAccent.shade700,
