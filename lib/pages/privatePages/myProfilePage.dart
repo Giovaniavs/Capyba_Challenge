@@ -85,19 +85,19 @@ class _MyProfilePage extends State<MyProfilePage> {
                               fontSize: 20,
                               backgroundColor: Colors.blueAccent.shade400,
                               onPressed: () async {
-                                setState(() => loading = true);
-                                dynamic result = await _auth
-                                    .updateUserInformations(name, email);
+                                // setState(() => loading = true);
+                                // dynamic result = await _auth
+                                //     .updateUserInformations(name, email);
 
-                                if (result == null) {
-                                  setState(() {
-                                    errorMessage = 'Email no formato inválido!';
-                                    loading = false;
-                                  });
-                                } else {
-                                  Navigator.of(context)
-                                      .pushReplacementNamed('/home');
-                                }
+                                // if (result == null) {
+                                //   setState(() {
+                                //     errorMessage = 'Email no formato inválido!';
+                                //     loading = false;
+                                //   });
+                                // } else {
+                                //   Navigator.of(context)
+                                //       .pushReplacementNamed('/home');
+                                // }
                               },
                             ),
                             SizedBox(height: 12.0),

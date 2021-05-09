@@ -39,8 +39,8 @@ class _RegisterPage extends State<RegisterPage> {
       onPressed: () async {
         setState(() => loading = true);
         Navigator.pop(context, true);
-        dynamic result =
-            await _auth.createUserWithEmailAndPassword(name, email, password);
+        dynamic result = await _auth.createUserWithEmailAndPassword(
+            name, email, password, imageFile);
 
         if (result == null) {
           setState(() {
@@ -112,10 +112,10 @@ class _RegisterPage extends State<RegisterPage> {
                                 height: 80,
                               ),
                         CustomButton(
-                          width: 100,
+                          width: 120,
                           height: 40,
                           fontSize: 15,
-                          title: 'Alterar foto',
+                          title: 'Adicionar foto',
                           onPressed: () async {
                             final pickedFile = await ImagePicker().getImage(
                               preferredCameraDevice: CameraDevice.front,
@@ -193,7 +193,13 @@ class _RegisterPage extends State<RegisterPage> {
                               onPressed: () async {
                                 if (_templateInputValidation.currentState
                                     .validate()) {
-                                  showUserTerms(context);
+                                  if (imageFile == null) {
+                                    setState(() {
+                                      errorMessage = 'Adicione uma foto!';
+                                    });
+                                  } else {
+                                    showUserTerms(context);
+                                  }
                                 }
                               },
                             ),
