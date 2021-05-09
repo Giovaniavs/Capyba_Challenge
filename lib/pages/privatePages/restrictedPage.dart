@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:capyba_challenge/services/authServices.dart';
+import 'package:capyba_challenge/customWidgets/customCollection.dart';
 
 class RestrictedPage extends StatefulWidget {
   @override
@@ -139,6 +140,48 @@ class _RestrictedPageState extends State<RestrictedPage> {
               ),
             ],
           ),
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            CustomCollection(
+              firstImageUrl:
+                  'https://images.unsplash.com/photo-1552573449-1c180bcfe86d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80',
+              secondImageUrl:
+                  'https://images.unsplash.com/photo-1553913861-c0fddf2619ee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80',
+            ),
+            CustomCollection(
+              firstImageUrl:
+                  'https://images.unsplash.com/photo-1553615738-d8e0829f1d61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1489&q=80',
+              secondImageUrl:
+                  'https://images.unsplash.com/photo-1553773077-91673524aafa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1351&q=80',
+            ),
+            CustomCollection(
+              firstImageUrl:
+                  'https://images.unsplash.com/photo-1553702446-a39d6fbee6cb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1351&q=80',
+              secondImageUrl:
+                  'https://images.unsplash.com/photo-1554273186-c3282aa9285f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1009&q=80',
+            ),
+            CustomCollection(
+              firstImageUrl:
+                  'https://images.unsplash.com/photo-1555231955-348aa2312e19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80',
+              secondImageUrl:
+                  'https://images.unsplash.com/photo-1554254648-2d58a1bc3fd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1351&q=80',
+            ),
+            CustomCollection(
+              firstImageUrl:
+                  'https://images.unsplash.com/photo-1556379092-dca659792591?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1489&q=80',
+              secondImageUrl:
+                  'https://images.unsplash.com/photo-1555993539-1732b0258235?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80',
+            ),
+            CustomCollection(
+              firstImageUrl:
+                  'https://images.unsplash.com/photo-1551573355-19727699d60a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80',
+              secondImageUrl:
+                  'https://images.unsplash.com/photo-1553449427-5be243bc1218?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80',
+            ),
+          ],
         ),
       ),
       bottomNavigationBar: BottomAppBar(
