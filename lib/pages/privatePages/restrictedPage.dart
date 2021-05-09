@@ -150,7 +150,7 @@ class _RestrictedPageState extends State<RestrictedPage> {
         backgroundColor: Colors.greenAccent.shade700,
         onPressed: () {},
         tooltip: 'Increment Counter',
-        child: Icon(Icons.add),
+        child: Icon(Icons.lock),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
