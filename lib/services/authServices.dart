@@ -47,7 +47,7 @@ class AuthService {
     try {
       final user = await _auth.currentUser();
 
-      await user.updateEmail(email);
+      user.updateEmail(email);
 
       await DatabaseService(uid: user.uid).handleUserData(name, email);
 

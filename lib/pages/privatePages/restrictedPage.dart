@@ -86,7 +86,7 @@ class _RestrictedPageState extends State<RestrictedPage> {
                       color: Colors.greenAccent.shade700,
                     ),
                     title: Text(
-                      'Editar meu perfil',
+                      'Meu perfil',
                       style: TextStyle(fontSize: 16),
                     ),
                     onTap: () {},

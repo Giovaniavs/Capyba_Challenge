@@ -88,8 +88,7 @@ class _HomePageState extends State<HomePage> {
                       Icons.account_box,
                       color: Colors.greenAccent.shade700,
                     ),
-                    title: Text('Editar meu perfil',
-                        style: TextStyle(fontSize: 16)),
+                    title: Text('Meu perfil', style: TextStyle(fontSize: 16)),
                     onTap: () {
                       Navigator.of(context).pushNamed('/myProfile');
                     },
