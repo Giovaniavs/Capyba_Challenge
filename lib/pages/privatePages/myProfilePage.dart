@@ -12,7 +12,6 @@ class MyProfilePage extends StatefulWidget {
 }
 
 class _MyProfilePage extends State<MyProfilePage> {
-  final _templateInputValidation = GlobalKey<FormState>();
   final AuthService _auth = AuthService();
   bool loading = false;
 
@@ -50,7 +49,6 @@ class _MyProfilePage extends State<MyProfilePage> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Form(
-                    key: _templateInputValidation,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -75,11 +73,6 @@ class _MyProfilePage extends State<MyProfilePage> {
                             CustomInput(
                               typeOfInput: 'Email',
                               label: email,
-                              validator: (emailValue) {
-                                if (emailValue.length < 10) {
-                                  return 'Coloque um E-mail com 10 ou mais caracteres!';
-                                }
-                              },
                               onChanged: (emailValue) {
                                 email = emailValue;
                               },
@@ -94,22 +87,18 @@ class _MyProfilePage extends State<MyProfilePage> {
                               fontSize: 20,
                               backgroundColor: Colors.blueAccent.shade400,
                               onPressed: () async {
-                                if (_templateInputValidation.currentState
-                                    .validate()) {
-                                  setState(() => loading = true);
-                                  dynamic result = await _auth
-                                      .updateUserInformations(name, email);
+                                setState(() => loading = true);
+                                dynamic result = await _auth
+                                    .updateUserInformations(name, email);
 
-                                  if (result == null) {
-                                    setState(() {
-                                      errorMessage =
-                                          'Email no formato inválido!';
-                                      loading = false;
-                                    });
-                                  } else {
-                                    Navigator.of(context)
-                                        .pushReplacementNamed('/home');
-                                  }
+                                if (result == null) {
+                                  setState(() {
+                                    errorMessage = 'Email no formato inválido!';
+                                    loading = false;
+                                  });
+                                } else {
+                                  Navigator.of(context)
+                                      .pushReplacementNamed('/home');
                                 }
                               },
                             ),
