@@ -161,7 +161,7 @@ class _RestrictedPageState extends State<RestrictedPage> {
               firstImageUrl:
                   'https://images.unsplash.com/photo-1553702446-a39d6fbee6cb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1351&q=80',
               secondImageUrl:
-                  'https://images.unsplash.com/photo-1554273186-c3282aa9285f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1009&q=80',
+                  'https://images.unsplash.com/photo-1556684119-0c4f88c60d1c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80',
             ),
             CustomCollection(
               firstImageUrl:

@@ -15,7 +15,7 @@ class AuthService {
       final user = await _auth.currentUser();
       String name = '';
       String email = '';
-      List list = [];
+      List listOfUserInformations = [];
 
       dynamic userInformations =
           await Firestore.instance.collection('User').document(user.uid).get();
@@ -23,9 +23,9 @@ class AuthService {
       name = userInformations.data['nome'];
       email = userInformations.data['email'];
 
-      list.addAll({name, email, user.isEmailVerified});
+      listOfUserInformations.addAll({name, email, user.isEmailVerified});
 
-      return list;
+      return listOfUserInformations;
     } catch (err) {
       print(err.toString());
       return null;
