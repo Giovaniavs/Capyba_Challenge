@@ -11,21 +11,23 @@ class _HomePageState extends State<HomePage> {
   final AuthService _auth = AuthService();
   String name = '';
   String email = '';
+  bool isEmailVerified = false;
 
   @override
   void initState() {
     getUserData().then((value) {
       setState(() {
-        name = value.data['nome'];
-        email = value.data['email'];
+        name = value[0];
+        email = value[1];
+        isEmailVerified = value[2];
       });
     });
     super.initState();
   }
 
   Future getUserData() async {
-    dynamic result = await _auth.getUserInformations();
-    return result;
+    dynamic userInformations = await _auth.getUserInformations();
+    return userInformations;
   }
 
   @override
@@ -33,7 +35,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Home Page',
+          'Página Home',
           style: TextStyle(color: Colors.white),
         ),
         iconTheme: IconThemeData(color: Colors.white),
@@ -86,17 +88,27 @@ class _HomePageState extends State<HomePage> {
                   Divider(
                     height: 1,
                   ),
-                  ListTile(
-                    leading: Icon(
-                      Icons.email,
-                      color: Colors.greenAccent.shade700,
-                    ),
-                    title:
-                        Text('Validar e-mail', style: TextStyle(fontSize: 16)),
-                    onTap: () {
-                      _auth.sendVerification();
-                    },
-                  ),
+                  isEmailVerified
+                      ? ListTile(
+                          leading: Icon(
+                            Icons.lock,
+                            color: Colors.greenAccent.shade700,
+                          ),
+                          title: Text('Acessar área restrita',
+                              style: TextStyle(fontSize: 16)),
+                          onTap: () {},
+                        )
+                      : ListTile(
+                          leading: Icon(
+                            Icons.email,
+                            color: Colors.greenAccent.shade700,
+                          ),
+                          title: Text('Validar e-mail',
+                              style: TextStyle(fontSize: 16)),
+                          onTap: () {
+                            _auth.sendVerification();
+                          },
+                        ),
                   Divider(
                     height: 1,
                   ),

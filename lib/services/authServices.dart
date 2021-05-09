@@ -13,11 +13,19 @@ class AuthService {
   Future getUserInformations() async {
     try {
       final user = await _auth.currentUser();
+      String name = '';
+      String email = '';
+      List list = [];
 
-      dynamic result =
-          Firestore.instance.collection('User').document(user.uid).get();
+      dynamic userInformations =
+          await Firestore.instance.collection('User').document(user.uid).get();
 
-      return result;
+      name = userInformations.data['nome'];
+      email = userInformations.data['email'];
+
+      list.addAll({name, email, user.isEmailVerified});
+
+      return list;
     } catch (err) {
       print(err.toString());
       return null;
@@ -29,6 +37,17 @@ class AuthService {
       final user = await _auth.currentUser();
 
       return user.sendEmailVerification();
+    } catch (err) {
+      print(err.toString());
+      return null;
+    }
+  }
+
+  Future checkIsEmailVerified() async {
+    try {
+      final user = await _auth.currentUser();
+
+      return user.isEmailVerified;
     } catch (err) {
       print(err.toString());
       return null;
