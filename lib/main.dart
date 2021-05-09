@@ -7,6 +7,7 @@ import 'package:capyba_challenge/customWidgets/customSplashScreen.dart';
 
 import 'package:capyba_challenge/pages/publicPages/successRegisterPage.dart';
 import 'package:capyba_challenge/pages/privatePages/restrictedPage.dart';
+import 'package:capyba_challenge/pages/privatePages/myProfilePage.dart';
 import 'package:capyba_challenge/pages/publicPages/registerPage.dart';
 import 'package:capyba_challenge/pages/publicPages/landingPage.dart';
 import 'package:capyba_challenge/pages/publicPages/loginPage.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
           '/login': (context) => LoginPage(),
           '/home': (context) => HomePage(),
           '/restrictedPage': (context) => RestrictedPage(),
+          '/myProfile': (context) => MyProfilePage(),
         },
       ),
     );

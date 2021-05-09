@@ -135,7 +135,7 @@ class _RestrictedPageState extends State<RestrictedPage> {
                       await _auth.signOut();
                       Navigator.of(context).pushNamedAndRemoveUntil(
                         '/landingPage',
-                        (route) => false,
+                        (r) => false,
                       );
                     },
                   ),

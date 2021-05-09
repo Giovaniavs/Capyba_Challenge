@@ -89,7 +89,9 @@ class _HomePageState extends State<HomePage> {
                       color: Colors.greenAccent.shade700,
                     ),
                     title: Text('Meu perfil', style: TextStyle(fontSize: 16)),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).pushNamed('/myProfile');
+                    },
                   ),
                   Divider(
                     height: 1,
@@ -145,7 +147,7 @@ class _HomePageState extends State<HomePage> {
                       await _auth.signOut();
                       Navigator.of(context).pushNamedAndRemoveUntil(
                         '/landingPage',
-                        (route) => false,
+                        (r) => false,
                       );
                     },
                   ),

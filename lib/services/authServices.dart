@@ -43,14 +43,18 @@ class AuthService {
     }
   }
 
-  Future checkIsEmailVerified() async {
+  Future updateUserInformations(String name, String email) async {
     try {
       final user = await _auth.currentUser();
 
-      return user.isEmailVerified;
+      await user.updateEmail(email);
+
+      await DatabaseService(uid: user.uid).handleUserData(name, email);
+
+      return true;
     } catch (err) {
       print(err.toString());
-      return null;
+      return false;
     }
   }
 
