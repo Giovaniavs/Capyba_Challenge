@@ -89,7 +89,9 @@ class _RestrictedPageState extends State<RestrictedPage> {
                       'Meu perfil',
                       style: TextStyle(fontSize: 16),
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).pushNamed('/myProfile');
+                    },
                   ),
                   Divider(
                     height: 1,
@@ -199,7 +201,7 @@ class _RestrictedPageState extends State<RestrictedPage> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.greenAccent.shade700,
         onPressed: () {},
-        tooltip: 'Increment Counter',
+        tooltip: 'Restricted Button',
         child: Icon(Icons.lock),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

@@ -208,7 +208,7 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.greenAccent.shade700,
         onPressed: () {},
-        tooltip: 'Increment Counter',
+        tooltip: 'Home button',
         child: Icon(Icons.home),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
