@@ -125,9 +125,11 @@ class _RegisterPage extends State<RegisterPage> {
                               source: ImageSource.camera,
                             );
 
-                            setState(() {
-                              imageFile = File(pickedFile.path);
-                            });
+                            if (pickedFile != null) {
+                              setState(() {
+                                imageFile = File(pickedFile.path);
+                              });
+                            }
                           },
                           backgroundColor: Colors.greenAccent.shade700,
                         ),

@@ -95,10 +95,11 @@ class _MyProfilePage extends State<MyProfilePage> {
                                   preferredCameraDevice: CameraDevice.front,
                                   source: ImageSource.camera,
                                 );
-
-                                setState(() {
-                                  imageFile = File(pickedFile.path);
-                                });
+                                if (pickedFile != null) {
+                                  setState(() {
+                                    imageFile = File(pickedFile.path);
+                                  });
+                                }
                               },
                               backgroundColor: Colors.greenAccent.shade700,
                             ),

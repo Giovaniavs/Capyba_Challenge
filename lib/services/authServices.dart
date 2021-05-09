@@ -70,6 +70,26 @@ class AuthService {
     }
   }
 
+  Future updateUserInformationsFromImageUrl(
+    String name,
+    String email,
+    String imageUrl,
+  ) async {
+    try {
+      final user = await _auth.currentUser();
+
+      await user.updateEmail(email);
+
+      await DatabaseService(uid: user.uid)
+          .handleUserData(name, email, imageUrl);
+
+      return _userFromFirebaseUser(user);
+    } catch (err) {
+      print(err.toString());
+      return null;
+    }
+  }
+
   Future signInWithEmailAndPassword(String email, String password) async {
     try {
       AuthResult result = await _auth.signInWithEmailAndPassword(
@@ -122,24 +142,6 @@ class AuthService {
       String imageFileUrl = await taskSnapshot.ref.getDownloadURL();
 
       return imageFileUrl;
-    } catch (err) {
-      print(err.toString());
-      return null;
-    }
-  }
-
-  Future updateUserInformationsFromImageUrl(
-    String name,
-    String email,
-    String imageUrl,
-  ) async {
-    try {
-      final user = await _auth.currentUser();
-
-      await DatabaseService(uid: user.uid)
-          .handleUserData(name, email, imageUrl);
-
-      return _userFromFirebaseUser(user);
     } catch (err) {
       print(err.toString());
       return null;
