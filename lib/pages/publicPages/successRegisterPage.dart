@@ -8,9 +8,6 @@ class SuccessRegisterPage extends StatefulWidget {
 }
 
 class _SuccessRegisterPageState extends State<SuccessRegisterPage> {
-  String email = '';
-  String password = '';
-
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -43,7 +40,7 @@ class _SuccessRegisterPageState extends State<SuccessRegisterPage> {
                 fontSize: 24,
                 backgroundColor: Colors.greenAccent.shade700,
                 onPressed: () {
-                  Navigator.of(context).pushNamed('/login');
+                  Navigator.of(context).pushReplacementNamed('/login');
                 },
               )
             ],

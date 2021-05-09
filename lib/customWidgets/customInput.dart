@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CustomInput extends StatelessWidget {
-  final String typeOfInput;
-  final String label;
   final Function onChanged;
   final Function validator;
+  final String typeOfInput;
+  final String label;
 
   CustomInput({
     Key key,
@@ -20,7 +20,9 @@ class CustomInput extends StatelessWidget {
       onChanged: this.onChanged,
       validator: this.validator,
       obscureText: this.typeOfInput == 'Password' ? (true) : (false),
-      keyboardType: this.typeOfInput == 'Email' ? (TextInputType.emailAddress) : (TextInputType.text),
+      keyboardType: this.typeOfInput == 'Email'
+          ? (TextInputType.emailAddress)
+          : (TextInputType.text),
       decoration: InputDecoration(
         labelText: this.label,
         border: OutlineInputBorder(),

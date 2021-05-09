@@ -22,6 +22,48 @@ class _RegisterPage extends State<RegisterPage> {
   String repeatPassword = '';
   String errorMessage = '';
 
+  showUserTerms(BuildContext context) {
+    Widget cancelButton = TextButton(
+      child: Text("Cancelar"),
+      onPressed: () => Navigator.pop(context, true),
+    );
+    Widget confirmButton = ElevatedButton(
+      child: Text("Aceitar"),
+      onPressed: () async {
+        setState(() => loading = true);
+        Navigator.pop(context, true);
+        dynamic result =
+            await _auth.createUserWithEmailAndPassword(name, email, password);
+
+        if (result == null) {
+          setState(() {
+            errorMessage = 'Email inválido ou já cadastrado!';
+            loading = false;
+          });
+        } else {
+          Navigator.of(context).pushReplacementNamed('/successRegister');
+        }
+      },
+    );
+    //configura o AlertDialog
+    AlertDialog userTermsAlert = AlertDialog(
+      title: Text("Termos de uso"),
+      content: Text(
+          "Ao aceitar, o usuário permite que tenhamos a posse do seu email e sua senha em nossa base de dados."),
+      actions: [
+        cancelButton,
+        confirmButton,
+      ],
+    );
+    //exibe o diálogo
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return userTermsAlert;
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return loading
@@ -108,21 +150,7 @@ class _RegisterPage extends State<RegisterPage> {
                               onPressed: () async {
                                 if (_templateInputValidation.currentState
                                     .validate()) {
-                                  setState(() => loading = true);
-                                  dynamic result = await _auth
-                                      .createUserWithEmailAndPassword(
-                                          name, email, password);
-
-                                  if (result == null) {
-                                    setState(() {
-                                      errorMessage =
-                                          'Email inválido ou já cadastrado!';
-                                      loading = false;
-                                    });
-                                  } else {
-                                    Navigator.of(context).pushReplacementNamed(
-                                        '/successRegister');
-                                  }
+                                  showUserTerms(context);
                                 }
                               },
                             ),

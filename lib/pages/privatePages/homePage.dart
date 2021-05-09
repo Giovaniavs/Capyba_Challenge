@@ -11,12 +11,14 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final AuthService _auth = AuthService();
-  String name = '';
-  String email = '';
   IconData validateEmailIcon = Icons.email;
-  String validateEmailText = 'Validar e-mail';
+
   bool isEmailVerified = false;
   bool shoudlSendEmail = true;
+
+  String name = '';
+  String email = '';
+  String validateEmailText = 'Validar e-mail';
 
   @override
   void initState() {

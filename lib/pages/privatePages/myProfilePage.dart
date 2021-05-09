@@ -17,8 +17,6 @@ class _MyProfilePage extends State<MyProfilePage> {
 
   String name = '';
   String email = '';
-  String password = '';
-  String repeatPassword = '';
   String errorMessage = '';
 
   @override

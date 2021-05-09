@@ -8,9 +8,6 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
-  String email = '';
-  String password = '';
-
   @override
   Widget build(BuildContext context) {
     return Material(
