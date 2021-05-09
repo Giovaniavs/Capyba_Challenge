@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 import 'package:capyba_challenge/services/authServices.dart';
 
@@ -14,6 +17,9 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPage extends State<RegisterPage> {
   final _templateInputValidation = GlobalKey<FormState>();
   final AuthService _auth = AuthService();
+
+  var imageFile;
+
   bool loading = false;
 
   String name = '';
@@ -27,6 +33,7 @@ class _RegisterPage extends State<RegisterPage> {
       child: Text("Cancelar"),
       onPressed: () => Navigator.pop(context, true),
     );
+
     Widget confirmButton = ElevatedButton(
       child: Text("Aceitar"),
       onPressed: () async {
@@ -45,7 +52,7 @@ class _RegisterPage extends State<RegisterPage> {
         }
       },
     );
-    //configura o AlertDialog
+
     AlertDialog userTermsAlert = AlertDialog(
       title: Text("Termos de uso"),
       content: Text(
@@ -55,7 +62,7 @@ class _RegisterPage extends State<RegisterPage> {
         confirmButton,
       ],
     );
-    //exibe o diálogo
+
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -74,17 +81,52 @@ class _RegisterPage extends State<RegisterPage> {
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(
+                    top: 35.0,
+                    right: 15.0,
+                    left: 15.0,
+                    bottom: 15.0,
+                  ),
                   child: Form(
                     key: _templateInputValidation,
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Image.asset('lib/assets/images/capyba_logo.png',
-                            width: 80, height: 80),
                         Text(
                           'Realize o seu cadastro!',
                           style: TextStyle(fontSize: 20),
+                        ),
+                        imageFile != null
+                            ? ClipRRect(
+                                borderRadius: BorderRadius.circular(120.0),
+                                child: Image.file(
+                                  imageFile,
+                                  width: 180.0,
+                                  height: 150.0,
+                                  fit: BoxFit.fill,
+                                ),
+                              )
+                            : Image.asset(
+                                'lib/assets/images/capyba_logo.png',
+                                width: 80,
+                                height: 80,
+                              ),
+                        CustomButton(
+                          width: 100,
+                          height: 40,
+                          fontSize: 15,
+                          title: 'Alterar foto',
+                          onPressed: () async {
+                            final pickedFile = await ImagePicker().getImage(
+                              preferredCameraDevice: CameraDevice.front,
+                              source: ImageSource.camera,
+                            );
+
+                            setState(() {
+                              imageFile = File(pickedFile.path);
+                            });
+                          },
+                          backgroundColor: Colors.greenAccent.shade700,
                         ),
                         CustomInput(
                           typeOfInput: 'Name',
@@ -143,7 +185,8 @@ class _RegisterPage extends State<RegisterPage> {
                         Column(
                           children: [
                             CustomButton(
-                              width: 110,
+                              width: double.infinity,
+                              height: 50,
                               title: 'Cadastrar',
                               fontSize: 20,
                               backgroundColor: Colors.blueAccent.shade400,
