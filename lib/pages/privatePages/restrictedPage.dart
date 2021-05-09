@@ -2,19 +2,16 @@ import 'package:flutter/material.dart';
 
 import 'package:capyba_challenge/services/authServices.dart';
 
-class HomePage extends StatefulWidget {
+class RestrictedPage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _RestrictedPageState createState() => _RestrictedPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _RestrictedPageState extends State<RestrictedPage> {
   final AuthService _auth = AuthService();
   String name = '';
   String email = '';
-  IconData validateEmailIcon = Icons.email;
-  String validateEmailText = 'Validar e-mail';
   bool isEmailVerified = false;
-  bool shoudlSendEmail = true;
 
   @override
   void initState() {
@@ -38,7 +35,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Página Home',
+          'Área restrita',
           style: TextStyle(color: Colors.white),
         ),
         iconTheme: IconThemeData(color: Colors.white),
@@ -94,31 +91,24 @@ class _HomePageState extends State<HomePage> {
                   isEmailVerified
                       ? ListTile(
                           leading: Icon(
-                            Icons.lock,
+                            Icons.home,
                             color: Colors.greenAccent.shade700,
                           ),
-                          title: Text('Acessar área restrita',
+                          title: Text('Voltar para a Home',
                               style: TextStyle(fontSize: 16)),
                           onTap: () {
-                            Navigator.of(context).pushNamed('/restrictedPage');
+                            Navigator.of(context).pushNamed('/home');
                           },
                         )
                       : ListTile(
                           leading: Icon(
-                            validateEmailIcon,
+                            Icons.email,
                             color: Colors.greenAccent.shade700,
                           ),
-                          title: Text(validateEmailText,
+                          title: Text('Validar e-mail',
                               style: TextStyle(fontSize: 16)),
                           onTap: () {
-                            if (shoudlSendEmail == true) {
-                              _auth.sendVerification();
-                              shoudlSendEmail = false;
-                              setState(() {
-                                validateEmailText = 'E-mail enviado!';
-                                validateEmailIcon = Icons.check;
-                              });
-                            }
+                            _auth.sendVerification();
                           },
                         ),
                   Divider(
